@@ -58,7 +58,7 @@
                 fleetId = mstId2FleetIdTable[ship.api_id];
                 bInfo = badgeDb[fleetId];
                 iconSrc =  "http://threebards.com/kaini/icons/" + 
-                    bInfo.type + "/" + fleetId + ".png";
+                    (bInfo? bInfo.type : "UNKNOWN") + "/" + fleetId + ".png";
                 $(".ship_tag", shipInfo).text(JSON.stringify( {
                     id: ship.api_id,
                     name: ship.api_name
