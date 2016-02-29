@@ -1,0 +1,21 @@
+.shiplist {
+    padding: 50px;
+}
+.shiplist .ship_info {
+    float:left;
+    background-color: #eee; 
+    margin: 5px; 
+    width: 80px;
+}
+
+.shiplist .ship_info .ship_tag {
+    width:80px;
+    height: 20px;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.shiplist .ship_info img {
+    width: 80px; 
+    height: 80px;
+}
