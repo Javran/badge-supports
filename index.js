@@ -43,26 +43,44 @@
         function checkFleetIds() {
             $(".shiplist").empty();
             var shipInfoTemp = $(".factory .ship_info");
-            $.each( masterData.api_mst_ship, function(i,x) {
-                if (x.api_id >= 500)
-                    return;
-                
-                var shipInfo = shipInfoTemp.clone();
-                var fleetId = mstId2FleetIdTable[x.api_id];
-                var bInfo = badgeDb[fleetId];
-                var iconSrc =  "http://threebards.com/kaini/icons/" + 
-                    bInfo.type + "/" + fleetId + ".png";
+            var shipInfoRowTemp = $(".factory .ship_info_row");
+            var i,row;
+            var curRow = shipInfoRowTemp.clone();
+            var shipInfo;
+            var fleetId,bInfo,iconSrc;
+            var ship;
 
+            for (i=0; i<masterData.api_mst_ship.length; ++i) {
+                ship = masterData.api_mst_ship[i];
+                if (ship.api_id >= 500)
+                    continue;
+                shipInfo = shipInfoTemp.clone();
+                fleetId = mstId2FleetIdTable[ship.api_id];
+                bInfo = badgeDb[fleetId];
+                iconSrc =  "http://threebards.com/kaini/icons/" + 
+                    bInfo.type + "/" + fleetId + ".png";
                 $(".ship_tag", shipInfo).text(JSON.stringify( {
-                    id: x.api_id,
-                    name: x.api_name,
-                    converted: fleetId,
-                    icon: iconSrc
+                    id: ship.api_id,
+                    name: ship.api_name
+                    // converted: fleetId,
+                    // icon: iconSrc
                 }));
 
+                $(".ship_tag", shipInfo).text(genTag(ship.api_id));
+
                 $("img", shipInfo).attr("src", iconSrc);
-                shipInfo.appendTo( ".shiplist" );
-            });
+
+                // determine row number..
+                if (curRow.children().length > 18) {
+                    curRow.appendTo( ".shiplist" );
+                    curRow = shipInfoRowTemp.clone();
+                }
+                shipInfo.appendTo( curRow );
+            }
+
+            if (curRow.children().length !== 0) {
+                curRow.appendTo( ".shiplist" );
+            }
         }
 
         function checkKainiIds() {
