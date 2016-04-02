@@ -1,6 +1,8 @@
 /* K2Badge.js
 
    Mapping master ids to KanColle Badge Generator(KBG) ids
+   (this module is not used by KC3 anymore,
+    as conversion tables has been maintained on the badge generator itself.)
 
    terms:
 
@@ -98,6 +100,7 @@
             "195":"ayanami2",
             "196":"hiryuu2",
             "197":"souryuu2",
+            "199":"ooshio2",
             "200":"abukuma2",
             "296":"chitosecvl2",
             "297":"chiyodacvl2",
@@ -322,7 +325,8 @@
                 "kasumi2":false,
                 "z12":false,
                 "z32":false,
-                "satsuki2":false
+                "satsuki2":false,
+                "ooshio2":false
             },
             "cl":{
                 "kitakami3":false,
@@ -556,8 +560,8 @@
             "355":"hagikaze1",
             "356":"kashima1",
             "357":"hatsuzuki1",
-            "358":"okinami1",
-            "359":"zara1",
+            "358":"zara1",
+            "359":"okinami1",
             "398":"i1681",
             "399":"i581",
             "400":"i81",
